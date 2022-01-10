@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="index.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <class class="content">
+            <div class="title"><h5>Cong ty tnhh Mobile T</h5></div>
+            <form
+                id="create"
+                method="post"
+                action="/"
+                enctype="multipart/form-data"
+            >
+                <div class="title"><h1>Them Danh Muc San Pham</h1></div>
+                <input type="text" name="maSanPham" placeholder="Ma san pham" />
+                <input
+                    type="text"
+                    name="tenSanPham"
+                    placeholder="Ten san pham"
+                />
+                <input
+                    type="text"
+                    name="hangSanPham"
+                    placeholder="Hang san pham"
+                />
+                <input type="number" name="namSanXuat" placeholder="Nam sx" />
+                <input type="number" name="giaNiemYet" placeholder="Gia" />
+                <br />
+                <input type="submit" value="Them sp" />
+            </form>
+            <form
+                id="delete"
+                method="post"
+                action="/delete"
+                enctype="multipart/form-data"
+            >
+                <div class="title"><h1>Danh Mục Sản Phẩm</h1></div>
+                <table border="1">
+                    <tr>
+                        <th>Mã Sản Phẩm</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Hãng Sản Phẩm</th>
+                        <th>Năm Sản Xuất</th>
+                        <th>Giá Niêm Yết</th>
+
+                        <th>Chọn</th>
+                    </tr>
+                    <% for (let i = 0; i < data.length; i++ ) { %>
+                    <tr>
+                        <td><%=data[i].maSanPham%></td>
+                        <td><%=data[i].tenSanPham%></td>
+                        <td><%=data[i].hangSanPham%></td>
+                        <td><%=data[i].namSanXuat%></td>
+                        <td><%=data[i].giaNiemYet%></td>
+                        <td>
+                            <input
+                                type="checkbox"
+                                name="<%=data[i].maSanPham%>"
+                            />
+                        </td>
+                    </tr>
+                    <%} %>
+                </table>
+                <br />
+                <input type="submit" value="Xóa" />
+            </form>
+        </class>
+    </body>
+</html>

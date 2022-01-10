@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="index.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <class class="content">
+            <div class="title"><h5>17072921_UngNgocSon</h5></div>
+            <form
+                id="create"
+                method="post"
+                action="/"
+                enctype="multipart/form-data"
+            >
+                <div class="title"><h1>THEM DANH MUC SACH</h1></div>
+                <input type="text" name="maSach" placeholder="Mã Sách" />
+                <input type="text" name="tenSach" placeholder="Tên Sách" />
+                <input type="text" name="tacGia" placeholder="Tác Giả" />
+                <br /><br />
+                <input type="text" name="isbn" placeholder="ISBN" />
+                <input type="number" name="soTrang" placeholder="Số Trang" />
+                <input type="number" name="namXB" placeholder="Năm Xuất Bản" />
+                <br /><br />
+                <input type="submit" value="Thêm Sách" />
+            </form>
+            <form
+                id="delete"
+                method="post"
+                action="/delete"
+                enctype="multipart/form-data"
+            >
+                <div class="title"><h1>DANH MỤC SÁCH</h1></div>
+                <table border="1">
+                    <tr>
+                        <th>Mã Sách</th>
+                        <th>Tên Sách</th>
+                        <th>Tác Giả</th>
+                        <th>ISBN</th>
+                        <th>Số Trang</th>
+                        <th>Năm Xuất Bản</th>
+                        <th>Chọn</th>
+                    </tr>
+                    <% for (let i=0; i < data.length; i++){%>
+                    <tr>
+                        <td><%=data[i].maSach%></td>
+                        <td><%=data[i].tenSach%></td>
+                        <td><%=data[i].tacGia%></td>
+                        <td><%=data[i].isbn%></td>
+                        <td><%=data[i].soTrang%></td>
+                        <td><%=data[i].namXB%></td>
+                        <td>
+                            <input type="checkbox" name="<%=data[i].maSach%>" />
+                        </td>
+                    </tr>
+                    <%} %>
+                </table>
+                <br />
+                <input type="submit" value="Xóa Sách Đã Chọn" />
+            </form>
+        </class>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+h1{
+    color: rgb(0, 255, 72);
+    background: rgb(13, 70, 73);
+    display:inline-block;
+}
+th{
+    background-color: aqua;
+}
+table , th, td {
+    margin-left: auto;
+  margin-right: auto;
+    border: 1px solid rgb(123, 6, 177);
+}
+*{
+    text-align: center;
+}
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.content {
+     width: 20%;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     align-items: center;
+ }
+.classtest {
+    width: 80%;
+
+}
+.title {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  table {
+      margin-top: 10px;
+      width: 100%;
+  }
+
+  th {
+      background-color: gray;
+  }

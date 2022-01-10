@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="index.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <class class="content">
+            <div class="title"><h5>17072921_Ứng Ngọc Sơn</h5></div>
+            <form
+                id="create"
+                method="POST"
+                action="/"
+                enctype="multipart/form-data"
+            >
+            <div class="title"><h1>Thêm Danh Mục Các Bài Báo</h1></div>
+                <input type="text" name="stt" placeholder="Số thứ tự" />
+                <input type="text" name="tenBaibao" placeholder="Tên bài báo" />
+                <input type="text" name="tenTacgia" placeholder="Tên tác giả" />
+                <br /><br>
+                <input type="text" name="isbn" placeholder="ISBN" />
+                <input type="text" name="soTrang" placeholder="Số trang" />
+                <input
+                    type="number"
+                    name="namXuatban"
+                    placeholder="Năm xuất bản"
+                />
+                <br /><br>
+                <!-- <input type="file" name="image" /> -->
+                <input type="submit" value="Thêm bài báo" />
+            </form>
+            <form
+                id="delete"
+                method="POST"
+                action="/delete"
+                enctype="multipart/form-data"
+            >
+                <div class="title"><h1>Danh Mục Các Bài Báo</h1></div>
+                <Table border="1">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên Bài Báo</th>
+                        <th>Tên nhóm tác giả</th>
+                        <th>ISBN</th>
+                        <th>Số trang</th>
+                        <th>Năm xuất bản</th>
+                        <!-- <th>Hinh anh</th> -->
+                        <th>Chọn</th>
+                    </tr>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                    <tr>
+                        <td><%=data[i].stt%></td>
+                        <td><%=data[i].tenBaibao%></td>
+                        <td><%=data[i].tenTacgia%></td>
+                        <td><%=data[i].isbn%></td>
+                        <td><%=data[i].soTrang%></td>
+                        <td><%=data[i].namXuatban%></td>
+                        <td>
+                            <input type="checkbox" name="<%=data[i].stt%>" />
+                        </td>
+                    </tr>
+                    <%} %>
+                </Table>
+                <br>
+                <input type="submit" value="Xóa bài báo Đã Chọn" />
+            </form>
+        </div>
+        <!-- <div class="classtest">
+            <h1>DANH SACH CAC CONG TY</h1>
+            <table>
+                <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                </tr>
+                <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>Germany</td>
+                </tr>
+                <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>Mexico</td>
+                </tr>
+            </table>
+        </div> -->
+    </body>
+</html>

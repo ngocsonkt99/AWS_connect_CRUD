@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="content">
+    <form id="create" method="POST" action="/" enctype="multipart/form-data">
+      <input type="text" name="maSP" placeholder="ID sản phẩm" />
+      <input type="text" name="tenSP" placeholder="Tên sản phẩm" />
+      <input type="number" name="soLuong" placeholder="Số lượng sản phẩm" />
+      <br>
+      <!-- <input type="file" name="image" /> -->
+      <input type="submit" value="Thêm Sản Phẩm" />
+    </form>
+    <form id="delete" method="POST" action="/delete" enctype="multipart/form-data">
+      <div class="title"><h1>Danh Sách Sản Phẩm </h1></div>
+      <Table border="1">
+        <tr>
+          <th>Mã Sản Phẩm</th>
+          <th>Tên Sản Phẩm</th>
+          <th>Số Lượng</th>
+          <!-- <th>Hinh anh</th> -->
+          <th>Chọn</th>
+        </tr>
+        <% for (let i = 0; i < data.length; i++) { %>
+          <tr>
+            <td><%=data[i].maSP%></td>
+            <td><%=data[i].tenSP%></td>
+            <td><%=data[i].soLuong%></td>
+            <td><input type="checkbox" name="<%=data[i].maSP%>" /></td>
+          </tr>
+        <%} %>
+      </Table>
+      <input type="submit" value="Xóa Sản Phẩm Đã Chọn"/>
+    </form>
+  </div>
+
+  <div class="classtest">
+    <h1>DANH SACH CAC CONG TY</h1>
+    <table>
+        <tr>
+          <th>Company</th>
+          <th>Contact</th>
+          <th>Country</th>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Centro comercial Moctezuma</td>
+          <td>Francisco Chang</td>
+          <td>Mexico</td>
+        </tr>
+      </table>
+  </div>
+</body>
+</html>

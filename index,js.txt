@@ -1,0 +1,82 @@
+AWS.config= config;
+
+const docClient = new AWS.DynamoDB.DocumentClient();
+const tableName= 'SanPham';
+
+const multer = require('multer');
+
+const upload = multer();
+
+//get san pham
+app.get('/',(req,res) =>{
+  
+    const params = {
+        TableName: tableName,
+    };
+
+    docClient.scan(params, (err, data)=>{
+        if(err) {
+            res.send("server error");
+        }else{
+            return res.render('index',{sanPhams: data.Items});
+        }
+
+    })
+});
+
+//them san pham
+app.post('/',upload.fields([]),(req,res) =>{
+    const {maSP, tenSP, soLuong} = req.body;
+
+    const params = {
+        TableName: tableName,
+        Item :{
+            "maSP":maSP,
+            "tenSP":tenSP,
+            "soLuong":soLuong, 
+        }
+    }
+
+    docClient.put(params, (err, data)=>{
+        if(err) {
+            res.send("server error");
+        }else{
+            return res.redirect('/');
+
+        }
+
+    })
+});
+
+//xoa san pham
+app.post('/delete', upload.fields([]), (req,res) => {
+        const listItem = Object.keys(req.body);
+
+        if(listItem.length === 0) {
+            return res.redirect('/');
+        }
+
+        function onDeleteItem(index) {
+            const params = {
+                TableName: tableName,
+                Key: {
+                    'maSP' : listItem[index]
+                }
+            }
+
+            docClient.delete(params, (err, data)=>{
+                if(err) {
+                    return res.send("server error");
+                }else{
+                    if(index >0){
+                        onDeleteItem(index - 1);
+                    }else{
+                        return res.redirect('/');
+                    }
+                }
+            })
+        }
+        onDeleteItem(listItem.length - 1);
+});
+
+app.listen(3000);
